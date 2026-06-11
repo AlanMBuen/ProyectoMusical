@@ -1,0 +1,3 @@
+export enum RolUsuario{
+    ADMIN, ARTISTA, USUARIO, CREADOR_DISQUERA
+}

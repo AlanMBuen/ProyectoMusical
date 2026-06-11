@@ -1,0 +1,36 @@
+{
+    "id": 66,
+    "password": "$2a$10$Oq.vTenQl6eoYeBsQ5iQqeAQjHyt2gO/g98ZVyK2R6j7WUIbM1INC",
+    "rol": "ADMIN",
+    "username": "admin3"
+}
+
+{
+    "username": "admin3",
+    "password": "123456",
+    "rol": "ADMIN"
+}
+
+localhost:8080/api/usuarios/crear
+
+{
+    "id": 1,
+    "nombre": "AlanAdmin3",
+    "plan": "GOLD",
+    "playList": null
+}
+
+{
+    "nombre": "AlanAdmin3",
+    "plan": "GOLD",
+    "usuarioId": 66
+}
+
+localhost:8080/api/usuarioscomunes/crear
+
+localhost:8080/api/usuarioscomunes
+
+Bearer
+
+eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbjMiLCJpYXQiOjE3ODExMzM5MTcsImV4cCI6MTc4MTE2OTkxN30.Ru_jPKqnXEbA1ZNJnP1OC531bPtdv9VCHcxaYdAFne0
+
