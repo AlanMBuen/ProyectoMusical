@@ -58,7 +58,7 @@ public class UsuarioComunService {
             .collect(Collectors.toList());
     }
 
-    public UsuarioComun crearusuariocomun(UsuarioComunDTO dtousuariocomun){
+    public UsuarioComunResponseDTO  crearusuariocomun(UsuarioComunDTO dtousuariocomun){
         UsuarioComun nusuariocomun = new UsuarioComun();
         nusuariocomun.setNombre(dtousuariocomun.getNombre());
         nusuariocomun.setPlan(dtousuariocomun.getPlan());
@@ -69,17 +69,17 @@ public class UsuarioComunService {
         UsuarioComun guardado=usuarioComunRepository.save(nusuariocomun);
         usuario.setPerfil(guardado);
         usuarioRepository.save(usuario);
-
-        return guardado;
+        return cambiarentidad(guardado);
     }
 
-    public UsuarioComun editarusuariocomun(UsuarioComunDTO dtousuariocomun, Long id){
+    public UsuarioComunResponseDTO  editarusuariocomun(UsuarioComunDTO dtousuariocomun, Long id){
         UsuarioComun eusuariocomun = usuarioComunRepository.findById(id)
             .orElseThrow(() -> new ResourceNotFoundException("Usuario Comun no encontrado"));
         eusuariocomun.setNombre(dtousuariocomun.getNombre());
         eusuariocomun.setPlan(dtousuariocomun.getPlan());
 
-        return usuarioComunRepository.save(eusuariocomun);
+        usuarioComunRepository.save(eusuariocomun);
+        return cambiarentidad(eusuariocomun);
     }
 
     public void eliminarusuariocomun(Long id){

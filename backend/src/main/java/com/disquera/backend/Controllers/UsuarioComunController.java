@@ -52,14 +52,14 @@ public class UsuarioComunController {
     }
 
     @PostMapping("/crear")
-    public ResponseEntity<UsuarioComun> crearusuariocomun(@RequestBody UsuarioComunDTO dtousuariocomun){
-        UsuarioComun crear = usuarioComunService.crearusuariocomun(dtousuariocomun);
+    public ResponseEntity<UsuarioComunResponseDTO> crearusuariocomun(@RequestBody UsuarioComunDTO dtousuariocomun){
+        UsuarioComunResponseDTO crear = usuarioComunService.crearusuariocomun(dtousuariocomun);
         return ResponseEntity.ok(crear);
     }
 
     @PutMapping("/editar/{id}")
-    public ResponseEntity<UsuarioComun> editarusuariocomun(@PathVariable Long id, @RequestBody UsuarioComunDTO dtousuariocomun){
-        UsuarioComun editar = usuarioComunService.editarusuariocomun(dtousuariocomun, id);
+    public ResponseEntity<UsuarioComunResponseDTO> editarusuariocomun(@PathVariable Long id, @RequestBody UsuarioComunDTO dtousuariocomun){
+        UsuarioComunResponseDTO editar = usuarioComunService.editarusuariocomun(dtousuariocomun, id);
         return ResponseEntity.ok(editar);
     }
 
