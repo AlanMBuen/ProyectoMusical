@@ -13,4 +13,24 @@ export class Playlist {
   obtenertodos(){
     return this.http.get<playlist[]>(`${this.url}`);
   }
+
+  obtenerxid(id: number){
+    return this.http.get<playlist>(`${this.url}/id/${id}`)
+  }
+
+  obtenerxnombre(nombre: string){
+    return this.http.get<playlist[]>(`${this.url}/nombre/${nombre}`)
+  }
+
+  crearplaylist(nplaylist: playlist){
+    return this.http.post<playlist>(`${this.url}`, nplaylist);
+  }
+
+  editarplaylist(eplaylist: playlist, id: number){
+    return this.http.put<playlist>(`${this.url}/editar/${id}`,eplaylist);
+  }
+
+  eliminarplaylist(id: number){
+    return this.http.delete<void>(`${this.url}/eliminar/${id}`);
+  }
 }
