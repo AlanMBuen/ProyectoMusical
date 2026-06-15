@@ -1,1 +1,60 @@
-/* You can add global styles to this file, and also import other style files */
+/* fraunces-regular - latin */
+@font-face {
+  font-display: swap;
+  font-family: 'Fraunces';
+  font-style: normal;
+  font-weight: 400;
+  src: url('/fonts/fraunces-v38-latin-regular.woff2') format('woff2');
+}
+
+/* fraunces-500 - latin */
+@font-face {
+  font-display: swap;
+  font-family: 'Fraunces';
+  font-style: normal;
+  font-weight: 500;
+  src: url('/fonts/fraunces-v38-latin-500.woff2') format('woff2');
+}
+
+
+/* dm-sans-300 - latin */
+@font-face {
+  font-display: swap;
+  font-family: 'DM Sans';
+  font-style: normal;
+  font-weight: 300;
+  src: url('/fonts/dm-sans-v17-latin-300.woff2') format('woff2');
+}
+
+/* dm-sans-regular - latin */
+@font-face {
+  font-display: swap;
+  font-family: 'DM Sans';
+  font-style: normal;
+  font-weight: 400;
+  src: url('/fonts/dm-sans-v17-latin-regular.woff2') format('woff2');
+}
+
+/* dm-sans-500 - latin */
+@font-face {
+  font-display: swap;
+  font-family: 'DM Sans';
+  font-style: normal;
+  font-weight: 500;
+  src: url('/fonts/dm-sans-v17-latin-500.woff2') format('woff2');
+}
+
+
+:root {
+--font-titulo: 'Fraunces', serif;
+--font-texto: 'DM Sans', sans-serif;
+--color-fondo: #F7F5F2; /* #F7F5F2, #FAFAF8, #EFEBE4, #E9E4DC  */
+--color-texto: #2B2724; /* #2B2724, #5C564E */
+--color-acento: #B5533C; /* #B5533C terracota, #3E5C4A verde botella, #35585E azul petroleo, #4A7856 verde salvia, #9E3B3B rojo vino, #C9A227 mostaza, #C2703D naranja quemado, #3B6E8F azul acero */
+}
+
+body{
+  background-color: var(--color-fondo);
+  color: var(--color-texto);
+  font-family: var( --font-texto);
+}
