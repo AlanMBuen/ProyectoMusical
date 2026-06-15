@@ -1,0 +1,26 @@
+El flujo completo es:
+Primero crea develop si no existe:
+
+git checkout main
+git checkout -b develop
+git push origin develop
+
+Para trabajar en algo nuevo, siempre parte desde develop:
+
+git checkout develop
+git checkout -b feature/nombre
+
+Trabajas, haces commits y push de tu feature:
+
+git add .
+git commit -m "descripcion"
+git push origin feature/nombre
+
+En GitHub abres Pull Request de feature/nombre hacia develop, revisas y haces merge.
+Cuando develop tiene varias features listas, abres Pull Request de develop hacia main y haces merge.
+Para mantener tu develop local actualizado después de merges:
+
+git checkout develop
+git pull origin develop
+
+Y antes de crear una nueva feature siempre haz pull de develop primero para partir del código más reciente.
