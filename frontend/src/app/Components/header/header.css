@@ -1,0 +1,85 @@
+.nav-principal {
+  position: relative;
+  display: flex; /* pone los elementos en fila, uno junto a otro */
+  justify-content: space-between; /* empuja el primer grupo a la izquierda y el último a la derecha */
+  align-items: center; /* centra verticalmente todo, aunque tengan distinta altura */
+  padding: var(--espacio-md); /* espacio interno alrededor de todo el nav */
+  background-color: var(--color-superficie); /* fondo ligeramente distinto al de la página */
+  border-bottom: 1px solid var(--color-borde); /* línea fina que separa el header del contenido */
+}
+
+.nav-principal__enlaces {
+  /* display: flex;  el div interno (Inicio, Acerca de, buscador) también en fila */
+  display: none; /* el div interno (Inicio, Acerca de, buscador) también en fila */
+  align-items: center; /* los alinea verticalmente entre ellos */
+  gap: var(--espacio-md); /* espacio uniforme entre cada elemento, sin usar margenes sueltos */
+}
+
+.nav-principal__enlaces2 {
+  display: flex; /* el div interno (Inicio, Acerca de, buscador) también en fila */
+  /* display: none; /* el div interno (Inicio, Acerca de, buscador) también en fila */
+  align-items: center; /* los alinea verticalmente entre ellos */
+  gap: var(--espacio-md); /* espacio uniforme entre cada elemento, sin usar margenes sueltos */
+}
+
+.nav-principal a {
+  font-size: clamp(0.85rem, 2vw, 1.1rem);
+  color: var(--color-texto); /* los links del nav usan el color de texto normal, no el de acento */
+  font-weight: 500;
+}
+
+.nav-principal p {
+  font-size: clamp(0.85rem, 2vw, 1.1rem);
+  color: var(--color-texto); /* los links del nav usan el color de texto normal, no el de acento */
+  font-weight: 500;
+}
+
+.nav-principal a:hover {
+  color: var(--color-acento); /* al pasar el mouse, sí toman el color de acento */
+}
+
+.nav-principal input[type='search'] {
+  padding: var(--espacio-xs) var(--espacio-sm); /* espacio interno del campo de búsqueda */
+  border: 1px solid var(--color-borde);
+  border-radius: var(--radio-sm);
+  font-family: var(--font-texto);
+}
+
+.nav-principal img {
+  /* height: 40px;  tamaño fijo para el logo, evita que se vea gigante */
+  height: clamp(38px, 5vw, 78px);
+  width: auto; /* el ancho se ajusta solo, manteniendo proporción */
+
+}
+
+.menu-desplegable {
+  position: absolute; /* se separa del flujo normal */
+  top: 100%; /* aparece justo debajo del nav */
+  right: 0; /* alineado con el botón, a la izquierda */
+  background-color: var(--color-superficie);
+  border: 1px solid var(--color-borde);
+  border-radius: var(--radio-md);
+  box-shadow: var(--sombra-suave);
+  list-style: none;
+  flex-direction: column; /* links apilados verticalmente */
+  min-width: 200px;
+  z-index: 10; /* queda por encima del contenido */
+}
+
+.boton-menu_header {
+  display: block;
+}
+
+@media (min-width: 768px){
+  .nav-principal__enlaces {
+    display: flex;
+  }
+
+  .boton-menu_header{
+    display: none;
+  }
+
+  .menu-desplegable{
+    display: none;
+  }
+}

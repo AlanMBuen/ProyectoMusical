@@ -1,4 +1,6 @@
-/* fraunces-regular - latin */
+/* ============================================
+   TIPOGRAFIAS - Fuentes descargadas localmente
+   ============================================ */
 @font-face {
   font-display: swap;
   font-family: 'Fraunces';
@@ -6,8 +8,6 @@
   font-weight: 400;
   src: url('/fonts/fraunces-v38-latin-regular.woff2') format('woff2');
 }
-
-/* fraunces-500 - latin */
 @font-face {
   font-display: swap;
   font-family: 'Fraunces';
@@ -15,9 +15,6 @@
   font-weight: 500;
   src: url('/fonts/fraunces-v38-latin-500.woff2') format('woff2');
 }
-
-
-/* dm-sans-300 - latin */
 @font-face {
   font-display: swap;
   font-family: 'DM Sans';
@@ -25,8 +22,6 @@
   font-weight: 300;
   src: url('/fonts/dm-sans-v17-latin-300.woff2') format('woff2');
 }
-
-/* dm-sans-regular - latin */
 @font-face {
   font-display: swap;
   font-family: 'DM Sans';
@@ -34,8 +29,6 @@
   font-weight: 400;
   src: url('/fonts/dm-sans-v17-latin-regular.woff2') format('woff2');
 }
-
-/* dm-sans-500 - latin */
 @font-face {
   font-display: swap;
   font-family: 'DM Sans';
@@ -44,17 +37,215 @@
   src: url('/fonts/dm-sans-v17-latin-500.woff2') format('woff2');
 }
 
-
+/* ============================================
+   VARIABLES GLOBALES (design tokens)
+   Cambia estos valores para personalizar toda
+   la app (util para una version white-label)
+   ============================================ */
 :root {
---font-titulo: 'Fraunces', serif;
---font-texto: 'DM Sans', sans-serif;
---color-fondo: #F7F5F2; /* #F7F5F2, #FAFAF8, #EFEBE4, #E9E4DC  */
---color-texto: #2B2724; /* #2B2724, #5C564E */
---color-acento: #B5533C; /* #B5533C terracota, #3E5C4A verde botella, #35585E azul petroleo, #4A7856 verde salvia, #9E3B3B rojo vino, #C9A227 mostaza, #C2703D naranja quemado, #3B6E8F azul acero */
+  /* Tipografias: titulo para encabezados, texto para todo lo demas */
+  --font-titulo: 'Fraunces', serif;
+  --font-texto: 'DM Sans', sans-serif;
+
+  /* Colores base */
+  --color-fondo: #f7f5f2; /* #F7F5F2, #FAFAF8, #EFEBE4, #E9E4DC  */ /* fondo general de la pagina */
+  --color-superficie: #ece7e1; /* tarjetas, paneles, formularios */
+  --color-texto: #2b2724; /* #2B2724, #5C564E */ /* texto principal, alto contraste */
+  --color-texto-secundario: #5c564e; /* texto secundario: fechas, descripciones */
+
+  /* Color de acento: edita esta linea para personalizar la marca */
+  --color-acento: #b5533c;
+  /* #B5533C terracota, #3E5C4A verde botella, #35585E azul petroleo, #4A7856 verde salvia, #9E3B3B rojo vino, #C9A227 mostaza, #C2703D naranja quemado, #3B6E8F azul acero */
+  --color-acento-hover: #9a4530; /* version mas oscura para hover/click */
+
+  /* Bordes y separadores */
+  --color-borde: #d8d2c8;
+
+  /* Colores de estado, para mensajes o badges */
+  --color-exito: #4a7856;
+  --color-error: #9e3b3b;
+  --color-aviso: #c9a227;
+
+  /* Espaciados reutilizables, para margenes y paddings consistentes */
+  --espacio-xs: 4px;
+  --espacio-sm: 8px;
+  --espacio-md: 16px;
+  --espacio-lg: 24px;
+  --espacio-xl: 40px;
+
+  /* Radios de borde, para esquinas redondeadas consistentes */
+  --radio-sm: 4px;
+  --radio-md: 8px;
+  --radio-lg: 16px;
+
+  /* Sombra suave, para dar profundidad sin exagerar */
+  --sombra-suave: 0 2px 8px rgba(43, 39, 36, 0.08);
 }
 
-body{
+/* ============================================
+   RESET BASICO
+   Quita margenes/paddings por defecto del
+   navegador y unifica como se calculan
+   anchos y altos (box-sizing)
+   ============================================ */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* ============================================
+   ESTILOS BASE DEL DOCUMENTO
+   ============================================ */
+html {
+  font-size: 16px; /* base para movil */
+}
+
+body {
   background-color: var(--color-fondo);
   color: var(--color-texto);
-  font-family: var( --font-texto);
+  font-family: var(--font-texto);
+  line-height: 1.6; /* mejora la lectura de parrafos */
+}
+
+main{
+  flex: 1; /* crece para ocupar todo el espacio sobrante, empujando el footer abajo */
+}
+
+app-root{
+  display: flex;
+  flex-direction: column; /* headers, main y footer se apilan verticalmente */
+  min-height: 100vh; /* el documento ocupa al menos toda la altura de la pantalla */
+}
+
+/* Encabezados usan la tipografia Fraunces */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-titulo);
+  font-weight: 500;
+  line-height: 1.3;
+}
+
+a {
+  color: var(--color-acento);
+  text-decoration: none;
+}
+
+a:hover {
+  color: var(--color-acento-hover);
+}
+
+/* ============================================
+   COMPONENTES BASE REUTILIZABLES
+   Clases genericas que podras usar en
+   cualquier componente Angular
+   ============================================ */
+
+/* Tarjeta: para artistas, albumes, canciones, etc. */
+.tarjeta {
+  background-color: var(--color-superficie);
+  border: 1px solid var(--color-borde);
+  border-radius: var(--radio-md);
+  padding: var(--espacio-md);
+  box-shadow: var(--sombra-suave);
+}
+
+/* Boton principal */
+.boton {
+  background-color: var(--color-acento);
+  color: #ffffff;
+  border: none;
+  border-radius: var(--radio-sm);
+  padding: var(--espacio-sm) var(--espacio-md);
+  font-family: var(--font-texto);
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.boton:hover {
+  background-color: var(--color-acento-hover);
+}
+
+/* Boton secundario, solo con borde */
+.boton-secundario {
+  background-color: transparent;
+  color: var(--color-acento);
+  border: 1px solid var(--color-acento);
+  border-radius: var(--radio-sm);
+  padding: var(--espacio-sm) var(--espacio-md);
+  font-family: var(--font-texto);
+  font-weight: 500;
+  cursor: pointer;
+}
+
+/* Contenedor para limitar el ancho del contenido en pantallas grandes */
+.contenedor {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--espacio-md);
+}
+
+
+
+.boton-menu {
+  background: none; /* sin fondo, parece un ícono */
+  border: none;
+  /* font-size: 1.5rem;  agranda el símbolo ☰ */
+  font-size: clamp(1rem, 3vw, 1.5rem);
+  cursor: pointer;
+  color: var(--color-texto);
+  padding: var(--espacio-xs);
+  margin-left: auto;
+}
+
+.menu-desplegable {
+  position: absolute; /* se separa del flujo normal */
+  top: 100%; /* aparece justo debajo del nav */
+  right: 0; /* alineado con el botón, a la izquierda */
+  background-color: var(--color-superficie);
+  border: 1px solid var(--color-borde);
+  border-radius: var(--radio-md);
+  box-shadow: var(--sombra-suave);
+  list-style: none;
+  display: flex;
+  flex-direction: column; /* links apilados verticalmente */
+  min-width: 200px;
+  z-index: 10; /* queda por encima del contenido */
+}
+
+.menu-desplegable li a {
+  display: block; /* el link ocupa toda la fila */
+  padding: var(--espacio-sm) var(--espacio-md);
+  color: var(--color-texto);
+}
+
+.menu-desplegable li a:hover {
+  background-color: var(--color-fondo);
+  color: var(--color-acento);
+}
+
+/* ============================================
+   RESPONSIVE - PUNTOS DE QUIEBRE
+   Filosofia "movil primero": los estilos de
+   arriba son para movil, y aqui se ajustan
+   para pantallas mas grandes
+   ============================================ */
+
+/* Tablet en adelante */
+@media (min-width: 768px) {
+  html {
+    font-size: 17px;
+  }
+}
+
+/* Laptop/escritorio en adelante */
+@media (min-width: 1024px) {
+  html {
+    font-size: 18px;
+  }
 }
