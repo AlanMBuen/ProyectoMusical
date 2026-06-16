@@ -1,0 +1,8 @@
+.nav-secundario {
+  position: relative; /* punto de referencia para el menú flotante */
+  display: flex;
+  align-items: center;
+  padding: var(--espacio-sm) var(--espacio-md);
+  background-color: var(--color-superficie);
+  border-bottom: 1px solid var(--color-borde);
+}

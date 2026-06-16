@@ -1,0 +1,36 @@
+<nav class="nav-principal">
+
+  <button class="boton-menu_header" (click)="menuAbierto = !menuAbierto">
+        ☰
+  </button>
+    @if (menuAbierto==true){
+        <ul class="menu-desplegable-header">
+
+          @for(item of linksNav; track $index){
+            <li>
+              <a [routerLink]="item.ruta">{{item.texto}}</a>
+            </li>
+          }
+
+        </ul>
+    }
+
+  <!-- <div class="nav-principal__enlaces">
+    <a [routerLink]="['/']">Inicio</a>
+    <a [routerLink]="['/']">Acerca de</a>
+  </div> -->
+
+
+  <div class="nav-principal__enlaces">
+    @for(item of linksNav; track $index){
+              <a [routerLink]="item.ruta">{{item.texto}}</a>
+          }
+  </div>
+
+  <div class="nav-principal__enlaces2">
+    <input type="search" placeholder="Buscar..." />
+    <p>Disquera NewMusic</p>
+  </div>
+
+  <a [routerLink]="['/']"><img src="images\Logo.jpg" alt="Disquera"/></a>
+</nav>

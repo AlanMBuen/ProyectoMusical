@@ -1,0 +1,49 @@
+.footer {
+  display: flex;
+  flex-direction: column; /* en móvil, los 4 grupos se apilan verticalmente */
+  /* gap: var(--espacio-lg); /* espacio entre cada grupo */
+  gap: 1rem;
+  /* padding: var(--espacio-xl) var(--espacio-md); espacio interno generoso */
+  padding: 0.5rem;
+  background-color: var(--color-superficie); /* lo distingue del fondo de la página */
+  border-top: 1px solid var(--color-borde); /* línea que lo separa del contenido */
+  color: var(--color-texto-secundario); /* texto del footer más sutil que el del body */
+  font-size: clamp(0.5rem, 2vw, 0.8rem);
+}
+
+.footer__grupo{
+    text-align: center;
+}
+
+.footer__grupo ul {
+  list-style: none; /* sin puntos de lista */
+  display: flex;
+  flex-direction: column; /* links uno debajo del otro dentro de cada grupo */
+  align-items: center;
+  /* gap: var(--espacio-sm);  espacio entre links */
+  margin-bottom: 0.3rem;
+}
+
+.footer__grupo a {
+  color: var(--color-texto-secundario); /* links discretos, no usan el acento por defecto */
+}
+
+.footer__grupo a:hover {
+  color: var(--color-acento); /* al pasar el mouse, sí resaltan con el acento */
+}
+
+.footer__grupo p {
+  /* margin-bottom: var(--espacio-xs);  pequeño espacio entre párrafos seguido */
+  margin-bottom: 0.3rem;
+}
+
+@media (min-width: 768px){
+    .footer{
+        flex-direction: row;
+        justify-content: space-between;
+        flex-wrap: wrap;
+    }
+    .footer__grupo{
+        flex: 1;
+    }
+}

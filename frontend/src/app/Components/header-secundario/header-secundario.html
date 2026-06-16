@@ -1,0 +1,15 @@
+<nav class="nav-secundario">
+    <button class="boton-menu" (click)="menuAbierto = !menuAbierto">
+        ☰
+    </button>
+    @if (menuAbierto==true){
+        <ul class="menu-desplegable">
+            <li>
+                <a [routerLink]="['/']">Inicio</a>
+            </li>
+            <li>
+                <a [routerLink]="['/']">Acerca de</a>
+            </li>
+        </ul>
+    }
+</nav>
